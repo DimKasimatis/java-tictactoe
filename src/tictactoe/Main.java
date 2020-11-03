@@ -79,15 +79,19 @@ public class Main {
         switch (result) {
             case "X wins":
                 System.out.println("X wins");
+                System.exit(0);
                 break;
             case "O wins":
                 System.out.println("O wins");
+                System.exit(0);
                 break;
             case "Impossible":
                 System.out.println("Impossible");
+                System.exit(0);
                 break;
             case "Draw":
                 System.out.println("Draw");
+                System.exit(0);
                 break;
             default:
                 getCoordinates();
