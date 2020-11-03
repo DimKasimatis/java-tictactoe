@@ -1,7 +1,5 @@
 package tictactoe;
 
-import com.sun.source.tree.WhileLoopTree;
-
 import java.util.*;
 
 public class Main {
@@ -100,32 +98,33 @@ public class Main {
 
     static void getCoordinates() { // gets coordinates and checks whether it satisfies specific conditions
         System.out.println("Enter coordinates: ");
-
-        while (!(scanner.hasNextInt())) {
-            System.out.println("You should enter numbers!");
-            scanner.next();
-        }
-
-        Xcord = scanner.nextInt();
-        Ycord = scanner.nextInt();
-
-        if (Xcord > 3 || Xcord < 1 || Ycord > 3 || Ycord < 1) {
-            System.out.println("Coordinates should be from 1 to 3!");
-        } else {
-            ninetyRight(board);
-            if (isEmpty(board, Xcord, Ycord)) {
-                fillValue(board, player, Xcord, Ycord);
-                ninetyLeft(board);
-                if (player == 'X') {
-                    player = 'O';
-                } else {
-                    player = 'X';
-                }
-                drawTable(board);
-            } else {
-                System.out.println("This cell is occupied! Choose another one!");
+        while (true) {
+            while (!(scanner.hasNextInt())) {
+                System.out.println("You should enter numbers!");
+                scanner.next();
             }
-            ninetyLeft(board);
+
+            Xcord = scanner.nextInt();
+            Ycord = scanner.nextInt();
+
+            if (Xcord > 3 || Xcord < 1 || Ycord > 3 || Ycord < 1) {
+                System.out.println("Coordinates should be from 1 to 3!");
+            } else {
+                ninetyRight(board);
+                if (isEmpty(board, Xcord, Ycord)) {
+                    fillValue(board, player, Xcord, Ycord);
+                    ninetyLeft(board);
+                    if (player == 'X') {
+                        player = 'O';
+                    } else {
+                        player = 'X';
+                    }
+                    drawTable(board);
+                } else {
+                    System.out.println("This cell is occupied! Choose another one!");
+                }
+                ninetyLeft(board);
+            }
         }
     }
 
